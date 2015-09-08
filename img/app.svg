@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   height="563.51154"
+   width="705.89642"
+   version="1.0"
+   viewBox="0 0 705.89645 563.51152"
+   id="svg2">
+  <defs
+     id="defs3">
+    <clipPath
+       id="clipPath4202"
+       clipPathUnits="userSpaceOnUse">
+      <rect
+         ry="18.787788"
+         rx="11.517153"
+         y="442.75363"
+         x="32.034138"
+         height="127.30069"
+         width="416.73792"
+         id="rect4204"
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:36.77887726;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </clipPath>
+  </defs>
+  <g
+     transform="translate(265.02103,-93.093489)"
+     id="layer1">
+    <g
+       transform="matrix(1.475,0,0,1.253,-267.64,80.738)"
+       id="g2072">
+      <rect
+         ry="23.541101"
+         rx="16.987797"
+         y="28.250164"
+         x="20.165014"
+         height="344.64331"
+         width="441.79498"
+         id="rect4196"
+         style="opacity:1;fill:none;stroke:#ffffff;stroke-width:36.77887726;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <ellipse
+         transform="matrix(1,0,0,-1,1.9782009,902.34424)"
+         clip-path="url(#clipPath4202)"
+         ry="59.769226"
+         rx="137.15425"
+         cy="443.52985"
+         cx="239.0843"
+         id="path4198"
+         style="opacity:1;fill:none;stroke:#ffffff;stroke-width:36.77887726;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+  </g>
+  <metadata
+     id="metadata66">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title></dc:title>
+        <dc:date>2006-12-29T10:57:08</dc:date>
+        <dc:description>Simple rounded TV set with a pilot and an antenna.</dc:description>
+        <dc:source>https://openclipart.org/detail/11295/tv-set-5-by-machovka-11295</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Machovka</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>antenna</rdf:li>
+            <rdf:li>electrical appliances</rdf:li>
+            <rdf:li>home</rdf:li>
+            <rdf:li>house</rdf:li>
+            <rdf:li>household</rdf:li>
+            <rdf:li>pilot</rdf:li>
+            <rdf:li>television</rdf:li>
+            <rdf:li>tv set</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

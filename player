@@ -1,0 +1,85 @@
+#!/bin/bash
+if [ -e /dev/cedar_dev ]; then
+	export VDPAU_DRIVER=sunxi
+	export VDPAU_OSD=1
+fi
+if [ -x /usr/bin/omxplayer ]; then
+	PLAYER=omx
+else
+	PLAYER=mpv
+fi
+SUDO=sudo
+case $1 in
+	eject)
+		screen -S player -p 0 -X stuff "q" > /dev/null 2> /dev/null
+		killall omxplayer > /dev/null 2> /dev/null
+		$SUDO /usr/bin/killall mpv > /dev/null 2> /dev/null
+		sleep 2
+		;;
+	play)
+		src="$2"
+		sub="`echo "$src" | sed -n 's|^\(/.*\)\.[^.]*$|\1.srt|p'`"
+		$0 eject
+		if [ "$PLAYER" = omx ]; then
+			if [ -f "$sub" ]; then
+				screen -md -S player omxplayer --lines 5 \
+				--align center --subtitles "$sub" -b "$src"
+			else
+				screen -md -S player omxplayer -b "$src"
+			fi
+		else
+			screen -md -S player $SUDO /usr/bin/xinit /usr/bin/mpv --input-unix-socket=/tmp/mpv.sock "$src"
+		fi
+		;;
+	pause)
+		if [ "$PLAYER" = omx ]; then
+			screen -S player -p 0 -X stuff "p"
+		else
+			echo cycle pause | $SUDO /usr/bin/socat - /tmp/mpv.sock
+		fi
+		;;
+	ff)
+		if [ "$PLAYER" = omx ]; then
+			screen -S player -p 0 -X stuff $'\e'[C
+		else
+			echo seek +60 | $SUDO /usr/bin/socat - /tmp/mpv.sock
+		fi
+		;;
+	ffff)
+		if [ "$PLAYER" = omx ]; then
+			screen -S player -p 0 -X stuff $'\e'[A
+		else
+			echo seek +600 | $SUDO /usr/bin/socat - /tmp/mpv.sock
+		fi
+		;;
+	rr)
+		if [ "$PLAYER" = omx ]; then
+			screen -S player -p 0 -X stuff $'\e'[D
+		else
+			echo seek -60 | $SUDO /usr/bin/socat - /tmp/mpv.sock
+		fi
+		;;
+	rrrr)
+		if [ "$PLAYER" = omx ]; then
+			screen -S player -p 0 -X stuff $'\e'[B
+		else
+			echo seek -600 | $SUDO /usr/bin/socat - /tmp/mpv.sock
+		fi
+		;;
+	volup)
+		if [ "$PLAYER" = omx ]; then
+			screen -S player -p 0 -X stuff "+"
+		else
+			echo add volume 1 | $SUDO /usr/bin/socat - /tmp/mpv.sock
+		fi
+		;;
+	voldown)
+		if [ "$PLAYER" = omx ]; then
+			screen -S player -p 0 -X stuff "-"
+		else
+			echo add volume -1 | $SUDO /usr/bin/socat - /tmp/mpv.sock
+		fi
+		;;
+	*)
+		exit 1
+esac

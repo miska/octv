@@ -1,0 +1,40 @@
+div .octv-control-div {
+   width: 100%;
+   clear: both;
+}
+
+.octv-control-div table {
+   width: 90%;
+   padding: 10px;
+   margin: 0 auto;
+   vertical-align: center;
+}
+
+.octv-control-div td {
+   width: 10%;
+   text-align: center;
+}
+
+.octv-control-div tr {
+   padding: 10px;
+}
+
+.octv-control-div img {
+   width: 50%;
+   height: 100%;
+}
+
+.octv-control-div img:hover {
+   border-style: dashed;
+   border-color: black;
+   border-width: 2px;
+   padding: 5px;
+}
+
+.octv-filelist table {
+   width: 90%;
+   padding: 2px;
+   margin: 0 auto;
+   vertical-align: center;
+   text-size: 1.5em;
+}

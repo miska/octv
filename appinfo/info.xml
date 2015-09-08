@@ -1,0 +1,9 @@
+<?xml version="1.0"?> 
+<info>
+	<id>octv</id>
+	<name>OCTV</name>
+	<description>Simple video player using mpv in background.</description>
+	<licence>AGPL</licence>
+	<author>Michal Hrusecky</author>
+	<requiremin>4.93</requiremin>
+</info>
