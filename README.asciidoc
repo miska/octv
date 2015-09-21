@@ -1,0 +1,88 @@
+OCTV - media player for ownCloud
+================================
+
+Description
+-----------
+
+Whole point of `OCTV` is to turn your computer running ownCloud into web
+controlled video player. You can control the player via web, but the movie is
+played on the computer you are controlling and output there as well. So you can
+control your player for example from your cellphone or tablet while movie is
+being played on your big TV.
+
+Installation
+------------
+
+For recommended setup, you would need following:
+
+* *mpv*
+* *socat*
+* *screen*
+* *Xorg*
+** if you can't run them as a user, then sudo as well
+* *killall*
+
+sudo
+^^^^
+
+You don't need sudo. You souldn't need sudo. But unfortunatelly it is not so
+easy on modern Linux distributions to run Xorg without sudo. So if you care
+about security, do not use sudo. If you are lazy, it is easier to use it. So
+add following content to your +/etc/sudoers.d/octv+
+
+--------------------------------------------------------------------------------
+%www ALL=(ALL) NOPASSWD: /usr/bin/killall mpv
+%www ALL=(ALL) NOPASSWD: /usr/bin/socat - /tmp/mpv.sock
+%www ALL=(ALL) NOPASSWD: /usr/bin/xinit /usr/bin/mpv --input-unix-socket=/tmp/mpv.sock *
+--------------------------------------------------------------------------------
+
+And if you need to (for example if you own Allwinner board you want to use),
+make sure that you add some important variables into list of kept environment
+variables in +/etc/sudoers+. For example
+
+--------------------------------------------------------------------------------
+Defaults env_keep = "LANG LC_ALL XDG_SESSION_COOKIE VDPAU_DRIVER VDPAU_OSD"
+--------------------------------------------------------------------------------
+
+mpv
+^^^
+
+To make everything work, you need to also configure mpv for the user you are
+running the player under. If you are using sudo, it will be root, so you can
+edit +/root/.mpv/config+ You can use my config for inpiration.
+
+--------------------------------------------------------------------------------
+# Fullscreen
+fs
+
+# I like PulseAudio
+ao=pulse
+
+# Use HW acceleration on Allwinner
+vo=vdpau
+hwdec=vdpau
+hwdec-codecs=all
+
+# My CRT needs some overscan settings
+video-zoom=-0.14
+video-pan-x=0.008
+
+# For some reason video was too saturated
+saturation=-30
+
+# Subtitles tunning
+force-rgba-osd-rendering
+sub-use-margins
+sub-text-font-size=45
+sub-pos=95
+--------------------------------------------------------------------------------
+
+Get it running
+^^^^^^^^^^^^^^
+
+Clone it into your ownClouds apps directory and enable it in the web. Then you
+can play movies from Files application via context menu or by selecting them in
+OCTV application. In that application you can also control the player itself -
+for example pausing it or rewinding it.
+
+
