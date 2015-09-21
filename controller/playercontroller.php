@@ -35,16 +35,18 @@
 
      /**
       * @NoAdminRequired
-      * @NoCSRFRequired
       */
      public function play($directory, $filename) {
-         $finfo = \OC\Files\Filesystem::getFileInfo('/', false);
-         $relpath = $finfo->getPath();
-         $datadir = \OC_Config::getValue('datadirectory', \OC::$SERVERROOT . '/data/');
-         $realname = $datadir . $relpath . $directory . $filename;
+         $realname = \OC\Files\Filesystem::getLocalFile($directory . $filename);
+
+         \OC_Log::write('octv', 'Playing ' . $realname, \OC_Log::INFO);
+
          system(\OC::$SERVERROOT . "/apps/octv/player play \"" . $realname . "\"");
          return $realname;
      }
+     /**
+      * @NoAdminRequired
+      */
      public function command($request) {
          system(\OC::$SERVERROOT . "/apps/octv/player " . $request);
      }
