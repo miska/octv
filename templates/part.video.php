@@ -20,7 +20,7 @@
  */
 ?>
 <tr><td><div class="octv-video"
-	data-dir="<?php p($_['video']['dir']); ?>"
-	data-name="<?php p($_['video']['name']); ?>">
+	data-dir=""
+	data-name="<?php p($_['video']['path']); ?>">
 	<a href="#"><p class="octv-videotitle"><?php p($_['video']['name']); ?></p></a>
 </div></td></tr>

@@ -30,36 +30,15 @@
  use OCP\AppFramework\Controller;
 
 class VideosManager {
-
-        private $cache;
-        private $fileview;
-
         private $videos;
 
-        public function __construct() {
-                $user = \OCP\User::getUser();
-                $root = $user . '/files/';
-                list($storage, $internalPath) = Filesystem::resolvePath($root);
-
-                $this->fileview = new View($root);
-                $this->cache = new Cache($storage);
-        }
-
         public function getVideos() {
-                if(!empty($this->videos)) {
-                        return $this->videos;
-                }
-
-                $videos = $this->cache->searchByMime('video');
+                $videos = \OC\Files\Filesystem::searchByMime('video');
 
                 foreach($videos as $video) {
-                        if(substr($video['path'], 0, 6) !== 'files/') {
-                                continue;
-                        }
-                        $url = substr($video['path'], 5);
                         $entry = array(
-                                'url' => $url,
-                                'dir' => substr($url, 0, strlen($url) - strlen($video['name'])),
+                                'url' => $video['name'],
+                                'path' => $video['path'],
                                 'name' => $video['name'],
                                 'size' => $video['size'],
                                 'mtime' => $video['mtime'],

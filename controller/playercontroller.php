@@ -37,7 +37,12 @@
       * @NoAdminRequired
       */
      public function play($directory, $filename) {
-         $realname = \OC\Files\Filesystem::getLocalFile($directory . $filename);
+         if((substr($directory, -1) != '/') && substr($filename, 0, 1) != '/') {
+             $relname = $directory . '/' . $filename;
+         } else {
+             $relname = $directory .       $filename;
+         }
+         $realname = \OC\Files\Filesystem::getLocalFile($relname);
 
          \OC_Log::write('octv', 'Playing ' . $realname, \OC_Log::INFO);
 
