@@ -42,28 +42,28 @@ case $1 in
 		if [ "$PLAYER" = omx ]; then
 			screen -S player -p 0 -X stuff $'\e'[C
 		else
-			echo seek +60 | $SUDO /usr/bin/socat - /tmp/mpv.sock
+			echo seek +30 | $SUDO /usr/bin/socat - /tmp/mpv.sock
 		fi
 		;;
 	ffff)
 		if [ "$PLAYER" = omx ]; then
 			screen -S player -p 0 -X stuff $'\e'[A
 		else
-			echo seek +600 | $SUDO /usr/bin/socat - /tmp/mpv.sock
+			echo seek +300 | $SUDO /usr/bin/socat - /tmp/mpv.sock
 		fi
 		;;
 	rr)
 		if [ "$PLAYER" = omx ]; then
 			screen -S player -p 0 -X stuff $'\e'[D
 		else
-			echo seek -60 | $SUDO /usr/bin/socat - /tmp/mpv.sock
+			echo seek -30 | $SUDO /usr/bin/socat - /tmp/mpv.sock
 		fi
 		;;
 	rrrr)
 		if [ "$PLAYER" = omx ]; then
 			screen -S player -p 0 -X stuff $'\e'[B
 		else
-			echo seek -600 | $SUDO /usr/bin/socat - /tmp/mpv.sock
+			echo seek -300 | $SUDO /usr/bin/socat - /tmp/mpv.sock
 		fi
 		;;
 	volup)
