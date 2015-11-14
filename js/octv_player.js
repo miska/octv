@@ -1,14 +1,3 @@
-var mimeTypes = [
-		'video/mp4',
-		'video/webm',
-		'video/x-flv',
-		'application/ogg',
-		'video/ogg',
-		'video/quicktime',
-		'video/x-matroska',
-		'video/x-ms-asf'
-	]
-
 function play_video(dirname, filename) {
 	var baseUrl = OC.generateUrl('/apps/octv');
 	var my_post = { directory: dirname,
@@ -48,9 +37,31 @@ $(document).ready(function() {
 		&& typeof OCA.Files !== 'undefined'
 		&& typeof OCA.Files.fileActions !== 'undefined'
 	) {
-		for (var i = 0; i < mimeTypes.length; ++i) {
-			var mime = videoViewer.mimeTypes[i];
-			OCA.Files.fileActions.register(mime, 'Play', OC.PERMISSION_READ, OC.imagePath('core', 'actions/play'), function(filename, context) { play_video(context.fileList.getCurrentDirectory(), filename) }, 'Play');
+		var mimeTypes = [
+		'video/mp4',
+		'video/webm',
+		'video/x-flv',
+		'application/ogg',
+		'video/ogg',
+		'video/quicktime',
+		'video/x-matroska',
+		'video/x-ms-asf'
+		];
+
+		var i;
+		for(i = 0; i<mimeTypes.length; i++) {
+			var value = mimeTypes[i];
+			console.log(value);
+			OCA.Files.fileActions.registerAction({
+				name: 'Play',
+				displayName: 'Play',
+				mime: value,
+				permissions: OC.PERMISSION_READ,
+				type: OCA.Files.FileActions.TYPE_INLINE,
+				actionHandler: function(filename, context) { play_video(context.fileList.getCurrentDirectory(), filename) }, 
+				icon: OC.imagePath('core', 'actions/play')
+			});
+			OCA.Files.fileActions.setDefault(value, 'Play');
 		}
 	}
         $('.octv-video').click(function() {

@@ -44,7 +44,7 @@
          }
          $realname = \OC\Files\Filesystem::getLocalFile($relname);
 
-         \OC_Log::write('octv', 'Playing ' . $realname, \OC_Log::INFO);
+         \OCP\Util::writeLog('octv', 'Playing ' . $realname, \OCP\Util::INFO);
 
          system(\OC::$SERVERROOT . "/apps/octv/player play \"" . $realname . "\"");
          return $realname;
