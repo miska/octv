@@ -19,10 +19,14 @@
  *
  */
 ?>
-<div class="octv-video" class="octv-high"
-	data-dir=""
-	data-name="<?php p($_['video']['path']); ?>">
-	<a href="#">
+<div class="octv-video-item">
+	<a href="#" class="octv-video"
+		data-dir=""
+		data-name="<?php p($_['video']['path']); ?>">
 		<img class="octv-preview" alt="Movie Preview" src="<?php print_unescaped($_['video']['preview']); ?>"/>
-		<p class="octv-videotitle"><?php p($_['video']['name']); ?></p></a>
+		<p class="octv-videotitle"><?php p($_['video']['name']); ?></p>
+	</a>
+	<a href="#" data-dir="<?php p(dirname($_['video']['path'])); ?>" data-name="<?php p(basename($_['video']['path'])); ?>" class="octv-delete">
+		<img alt="Delete Movie" src="<?php print_unescaped(\OCP\Util::imagePath('core', 'actions/delete.svg')); ?>"/>
+	</a>
 </div>

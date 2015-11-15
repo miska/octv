@@ -15,6 +15,32 @@ function play_video(dirname, filename) {
 	});
 }
 
+function delete_video(dirname, filename) {
+	var baseUrl = OC.generateUrl('/apps/files');
+	var my_post = { 'dir': dirname,
+			'files': JSON.stringify( [ filename ] ) };
+	OC.Notification.showTemporary('Deleting "' + filename + '"');
+	$.ajax({
+		url: baseUrl + '/ajax/delete.php',
+		type: 'POST',
+		data: my_post
+	}).done(function (response) {
+		OC.Notification.showTemporary('File "' + filename + '" deleted...');
+	}).fail(function (response, code) {
+		OC.Notification.showTemporary('ERROR: Something went wrong while trying to delete file "' + filename + '"');
+	});
+	var my_get = { 'dir': dirname,
+			'force': 'true' };
+	OC.Notification.showTemporary('Refreshing, please wait...');
+	$.ajax({
+		url: baseUrl + '/ajax/scan.php',
+		type: 'GET',
+		data: my_get
+	}).done(function (response) {
+		location.reload();
+	});
+}
+
 function player_command(request) {
 	var baseUrl = OC.generateUrl('/apps/octv');
 	var my_post = { request: request };
@@ -66,6 +92,9 @@ $(document).ready(function() {
 	}
         $('.octv-video').click(function() {
                 play_video($(this).data('dir'), $(this).data('name'));
+        });
+        $('.octv-delete').click(function() {
+                delete_video($(this).data('dir'), $(this).data('name'));
         });
         $('.octv-control').click(function() {
                 player_command($(this).data('command'));

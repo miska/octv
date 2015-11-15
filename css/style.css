@@ -36,20 +36,28 @@ div .octv-control-element {
    background-color: #ccc;
 }
 
-.octv-video {
+.octv-video-item {
    width: 300px;
-   height: 300px;
+   height: 320px;
    float: left;
+   padding: 10px;
 }
 
-.octv-video img {
+.octv-video-item img {
+   margin-top: 10px;
    margin-left: 50px;
    margin-right: 50px;
-   margin-top: 20px;
    margin-bottom: 20px;
    text-align: center;
 }
 
-.octv-video p {
+.octv-video-item p {
    text-align: center;
+   clear: both;
+}
+
+.octv-delete img {
+   width: 20px;
+   margin-left: 140px;
+   margin-left: 140px;
 }
