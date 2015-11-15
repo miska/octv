@@ -19,8 +19,10 @@
  *
  */
 ?>
-<tr><td><div class="octv-video"
+<div class="octv-video" class="octv-high"
 	data-dir=""
 	data-name="<?php p($_['video']['path']); ?>">
-	<a href="#"><p class="octv-videotitle"><?php p($_['video']['name']); ?></p></a>
-</div></td></tr>
+	<a href="#">
+		<img class="octv-preview" alt="Movie Preview" src="<?php print_unescaped($_['video']['preview']); ?>"/>
+		<p class="octv-videotitle"><?php p($_['video']['name']); ?></p></a>
+</div>

@@ -1,40 +1,55 @@
 div .octv-control-div {
    width: 100%;
+   min-width: 200px;
    clear: both;
-}
-
-.octv-control-div table {
-   width: 90%;
-   padding: 10px;
-   margin: 0 auto;
-   vertical-align: center;
-}
-
-.octv-control-div td {
-   width: 10%;
+   min-height: 50px;
+   height: 10%;
+   margin-bottom: 20px;
    text-align: center;
 }
 
-.octv-control-div tr {
-   padding: 10px;
+div .octv-control-div-inside {
+   display: block;
+   width: 80%;
+   height: 100%;
+   margin: 5px auto;
+   text-align: center;
+   clear: both;
+}
+
+div .octv-control-element {
+   float: left;
+   width: 12%;
+   height: 100%;
+   padding: 0px;
+   vertical-align: center;
+   clear: none;
 }
 
 .octv-control-div img {
-   width: 50%;
    height: 100%;
+   display: block;
+   margin: 5px auto;
 }
 
-.octv-control-div img:hover {
-   border-style: dashed;
-   border-color: black;
-   border-width: 2px;
-   padding: 5px;
+.octv-high :hover {
+   background-color: #ccc;
 }
 
-.octv-filelist table {
-   width: 90%;
-   padding: 2px;
-   margin: 0 auto;
-   vertical-align: center;
-   text-size: 1.5em;
+.octv-video {
+   width: 300px;
+   height: 300px;
+   float: left;
+}
+
+.octv-video img {
+   margin-left: 50px;
+   margin-right: 50px;
+   margin-top: 20px;
+   margin-bottom: 20px;
+   text-align: center;
+}
+
+.octv-video p {
+   text-align: center;
 }

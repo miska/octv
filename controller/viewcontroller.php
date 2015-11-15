@@ -40,13 +40,13 @@ class VideosManager {
                                 'url' => $video['name'],
                                 'path' => $video['path'],
                                 'name' => $video['name'],
-                                'size' => $video['size'],
                                 'mtime' => $video['mtime'],
-                                'mime' => $video['mimetype'],
+				'preview' => \OCP\Util::linkToRoute('core_ajax_preview', array('file' => $video['path'], 'x' => 200, 'y' => 200)),
                         );
 
                         $this->videos[] = $entry;
                 }
+		uasort($this->videos, function($a, $b) { return $a['mtime'] < $b['mtime']; });
                 return $this->videos;
         }
 }

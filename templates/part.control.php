@@ -20,25 +20,30 @@
  */
 ?>
 <div class="octv-control-div">
-<table>
-<tr style>
-<td>
+<div class="octv-control-div-inside">
+<div class="octv-control-element">
 <a href="#" alt="eject"  data-command="eject" class="octv-control">    <img src="<?php print_unescaped(OCP\Util::imagePath('octv', 'eject.svg')) ?>"/></a>
-</td><td>
+</div>
+<div class="octv-control-element">
 <a href="#" alt="<<"     data-command="rrrr" class="octv-control">     <img src="<?php print_unescaped(OCP\Util::imagePath('octv', 'rrrr.svg')) ?>"/></a>
-</td><td>
+</div>
+<div class="octv-control-element">
 <a href="#" alt="<"      data-command="rr" class="octv-control">       <img src="<?php print_unescaped(OCP\Util::imagePath('octv', 'rr.svg')) ?>"/></a>
-</td><td>
+</div>
+<div class="octv-control-element">
 <a href="#" alt="||"     data-command="pause" class="octv-control">    <img src="<?php print_unescaped(OCP\Util::imagePath('octv', 'pause.svg')) ?>"/></a>
-</td><td>
+</div>
+<div class="octv-control-element">
 <a href="#" alt=">"      data-command="ff" class="octv-control">       <img src="<?php print_unescaped(OCP\Util::imagePath('octv', 'ff.svg')) ?>"/></a>
-</td><td>
+</div>
+<div class="octv-control-element">
 <a href="#" alt=">>"     data-command="ffff" class="octv-control">     <img src="<?php print_unescaped(OCP\Util::imagePath('octv', 'ffff.svg')) ?>"/></a>
-</td><td>
+</div>
+<div class="octv-control-element">
 <a href="#" alt="vol --" data-command="voldown" class="octv-control">  <img src="<?php print_unescaped(OCP\Util::imagePath('octv', 'vol-.svg')) ?>"/></a>
-</td><td>
+</div>
+<div class="octv-control-element">
 <a href="#" alt="vol ++" data-command="volup" class="octv-control">    <img src="<?php print_unescaped(OCP\Util::imagePath('octv', 'vol+.svg')) ?>"/></a>
-</td>
-</tr>
-</table>
+</div>
+</div>
 </div>
