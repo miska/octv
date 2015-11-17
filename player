@@ -70,14 +70,14 @@ case $1 in
 		if [ "$PLAYER" = omx ]; then
 			screen -S player -p 0 -X stuff "+"
 		else
-			echo add volume 1 | $SUDO /usr/bin/socat - /tmp/mpv.sock
+			echo add volume 5 | $SUDO /usr/bin/socat - /tmp/mpv.sock
 		fi
 		;;
 	voldown)
 		if [ "$PLAYER" = omx ]; then
 			screen -S player -p 0 -X stuff "-"
 		else
-			echo add volume -1 | $SUDO /usr/bin/socat - /tmp/mpv.sock
+			echo add volume -5 | $SUDO /usr/bin/socat - /tmp/mpv.sock
 		fi
 		;;
 	*)
