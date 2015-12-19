@@ -38,7 +38,7 @@ div .octv-control-element {
 
 .octv-video-item {
    width: 300px;
-   height: 320px;
+   height: 300px;
    float: left;
    padding: 10px;
 }
@@ -51,13 +51,26 @@ div .octv-control-element {
    text-align: center;
 }
 
+.octv-filelist {
+   display: inline-block;
+}
+
 .octv-video-item p {
+   clear: none;
+   padding-right: 0px;
+}
+
+.app-octv {
    text-align: center;
-   clear: both;
 }
 
 .octv-delete img {
+   display: block;
+   float: right;
    width: 20px;
-   margin-left: 140px;
-   margin-left: 140px;
+   margin-right: 15px;
+   margin-left: 5px;
+   margin-top: 5px;
+   margin-bottom: 5px;
+   clear: none;
 }
