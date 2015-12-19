@@ -26,18 +26,18 @@ function delete_video(dirname, filename) {
 		data: my_post
 	}).done(function (response) {
 		OC.Notification.showTemporary('File "' + filename + '" deleted...');
+		var my_get = { 'dir': dirname,
+				'force': 'true' };
+		OC.Notification.showTemporary('Refreshing, please wait...');
+		$.ajax({
+			url: baseUrl + '/ajax/scan.php',
+			type: 'GET',
+			data: my_get
+		}).done(function (response) {
+			location.reload();
+		});
 	}).fail(function (response, code) {
 		OC.Notification.showTemporary('ERROR: Something went wrong while trying to delete file "' + filename + '"');
-	});
-	var my_get = { 'dir': dirname,
-			'force': 'true' };
-	OC.Notification.showTemporary('Refreshing, please wait...');
-	$.ajax({
-		url: baseUrl + '/ajax/scan.php',
-		type: 'GET',
-		data: my_get
-	}).done(function (response) {
-		location.reload();
 	});
 }
 
