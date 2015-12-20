@@ -26,8 +26,9 @@ div .octv-control-element {
 
 .octv-video-item {
    width: 300px;
-   height: 300px;
-   float: left;
+   height: 320px;
+   display: inline-block;
+   vertical-align: top;
    padding: 10px;
 }
 
@@ -40,12 +41,10 @@ div .octv-control-element {
 }
 
 .octv-filelist {
-   clear: both;
    display: inline-block;
 }
 
 .octv-video-item p {
-   clear: none;
    padding-right: 0px;
 }
 
