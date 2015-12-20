@@ -53,7 +53,8 @@
       * @NoAdminRequired
       */
      public function command($request) {
-         system(\OC::$SERVERROOT . "/apps/octv/player " . $request);
+         exec(\OC::$SERVERROOT . "/apps/octv/player " . $request, $output, $ret);
+         return json_decode(implode($output));
      }
  }
 ?>

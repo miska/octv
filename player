@@ -80,6 +80,30 @@ case $1 in
 			echo add volume -5 | $SUDO /usr/bin/socat - /tmp/mpv.sock
 		fi
 		;;
+	subminus)
+		if [ "$PLAYER" \!= omx ]; then
+			echo sub_delay -1 | $SUDO /usr/bin/socat - /tmp/mpv.sock
+		fi
+		;;
+	subplus)
+		if [ "$PLAYER" \!= omx ]; then
+			echo sub_delay +1 | $SUDO /usr/bin/socat - /tmp/mpv.sock
+		fi
+		;;
+	info)
+		if [ "$PLAYER" \!= omx ]; then
+			if [ \! -e /tmp/mpv.sock ]; then
+				echo " { \"status\": \"stopped\" } "
+				exit 0
+			fi
+			echo " { \"status\": \"playing\",
+                                 \"filename\": `echo '{ "command": ["get_property", "filename"] }'       | $SUDO /usr/bin/socat - /tmp/mpv.sock | sed 's|.*data":\(.*\),"error.*|\1|'`,
+			         \"current\": `echo '{ "command": ["get_property", "playback-time"] }'   | $SUDO /usr/bin/socat - /tmp/mpv.sock | sed 's|.*data":\(.*\),"error.*|\1|'`,
+			         \"total\": `echo '{ "command": ["get_property", "length"] }'            | $SUDO /usr/bin/socat - /tmp/mpv.sock | sed 's|.*data":\(.*\),"error.*|\1|'`
+			       }
+			"
+		fi
+		;;
 	*)
 		exit 1
 esac

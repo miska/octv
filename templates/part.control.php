@@ -19,6 +19,10 @@
  *
  */
 ?>
+<div class="octv-control-div" id="octv-status">
+<p>Now playing: <span id="octv-now"></span> (<span id="octv-current"></span> / <span id="octv-total"></span>)</p>
+</div>
+<hr/>
 <div class="octv-control-div">
 <div class="octv-control-element">
 <a href="#" alt="eject"  data-command="eject" class="octv-control">    <img src="<?php print_unescaped(OCP\Util::imagePath('octv', 'eject.svg')) ?>"/></a>
