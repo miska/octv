@@ -20,7 +20,6 @@
  */
 ?>
 <div class="octv-control-div">
-<div class="octv-control-div-inside">
 <div class="octv-control-element">
 <a href="#" alt="eject"  data-command="eject" class="octv-control">    <img src="<?php print_unescaped(OCP\Util::imagePath('octv', 'eject.svg')) ?>"/></a>
 </div>
@@ -46,4 +45,4 @@
 <a href="#" alt="vol ++" data-command="volup" class="octv-control">    <img src="<?php print_unescaped(OCP\Util::imagePath('octv', 'vol+.svg')) ?>"/></a>
 </div>
 </div>
-</div>
+<hr/>

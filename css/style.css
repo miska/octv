@@ -1,34 +1,22 @@
 div .octv-control-div {
-   width: 100%;
+   display: inline-block;
    min-width: 200px;
    clear: both;
    min-height: 50px;
    height: 10%;
    margin-bottom: 20px;
-   text-align: center;
-}
-
-div .octv-control-div-inside {
-   display: block;
-   width: 80%;
-   height: 100%;
-   margin: 5px auto;
-   text-align: center;
-   clear: both;
 }
 
 div .octv-control-element {
-   float: left;
-   width: 12%;
+   display: inline-block;
+   margin: 10px;
    height: 100%;
-   padding: 0px;
    vertical-align: center;
    clear: none;
 }
 
 .octv-control-div img {
    height: 100%;
-   display: block;
    margin: 5px auto;
 }
 
@@ -52,6 +40,7 @@ div .octv-control-element {
 }
 
 .octv-filelist {
+   clear: both;
    display: inline-block;
 }
 
