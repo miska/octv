@@ -7,6 +7,41 @@ div .octv-control-div {
    margin-bottom: 20px;
 }
 
+#octv-status {
+   text-align: center;
+   margin: 10px;
+   clear: both;
+   display: none;
+}
+
+#play-progressdiv p {
+   font-size: 100%;
+   margin: 10px;
+}
+
+#octv-now {
+   font-size: 200%;
+   font-weight: bold;
+}
+
+#play-progressdiv {
+   margin-left: 10%;
+   margin-right: 10%;
+   width: 80%;
+}
+
+#play-progressbar {
+   display: inline-block;
+   width: 80%;
+   vertical-align: center;
+}
+
+#play-progresstext {
+   display: inline-block;
+   text-align: left;
+   vertical-align: center;
+}
+
 div .octv-control-element {
    display: inline-block;
    margin: 10px;

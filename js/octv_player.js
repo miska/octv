@@ -62,6 +62,8 @@ function update_player_info() {
 			$('#octv-now').text(response.filename);
 			$('#octv-total').text(to_hour_mins(response.total));
 			$('#octv-current').text(to_hour_mins(response.current));
+			$('#play-progressbar').prop('max', Math.floor(response.total / 60));
+			$('#play-progressbar').val(Math.floor(response.current / 60));
 			$('#octv-status').show();
 		} else {
 			$('#octv-status').hide();
