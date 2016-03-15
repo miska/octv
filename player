@@ -3,12 +3,17 @@ if [ -e /dev/cedar_dev ]; then
 	export VDPAU_DRIVER=sunxi
 	export VDPAU_OSD=1
 fi
+SUDO=
 if [ -x /usr/bin/omxplayer ]; then
 	PLAYER=omx
+	OMXPLAYER_DBUS_ADDR="/tmp/omxplayerdbus.${USER}"
+	OMXPLAYER_DBUS_PID="/tmp/omxplayerdbus.${USER}.pid"
+	export DBUS_SESSION_BUS_ADDRESS=`cat $OMXPLAYER_DBUS_ADDR`
+	export DBUS_SESSION_BUS_PID=`cat $OMXPLAYER_DBUS_PID`
 else
 	PLAYER=mpv
+	SUDO=sudo
 fi
-SUDO=sudo
 case $1 in
 	eject)
 		screen -S player -p 0 -X stuff "q" > /dev/null 2> /dev/null
@@ -91,17 +96,30 @@ case $1 in
 		fi
 		;;
 	info)
-		if [ "$PLAYER" \!= omx ]; then
-			if [ \! -e /tmp/mpv.sock ]; then
-				echo " { \"status\": \"stopped\" } "
-				exit 0
+		if [ "$PLAYER" = omx ]; then
+			if [ "`ps ax | grep omxplayer | grep -v grep`" ]; then
+	                        total="`   dbus-send --print-reply=literal --session --reply-timeout=500 --dest=org.mpris.MediaPlayer2.omxplayer /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Duration | sed -n 's|.*\ \([0-9]*\)[0-9][0-9][0-9][0-9][0-9][0-9]|\1|p'`"
+				[ -n "$total" ] || total=0
+				current="` dbus-send --print-reply=literal --session --reply-timeout=500 --dest=org.mpris.MediaPlayer2.omxplayer /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Position | sed -n 's|.*\ \([0-9]*\)[0-9][0-9][0-9][0-9][0-9][0-9]|\1|p'`"
+				[ -n "$current" ] || current=0
+				filename="`dbus-send --print-reply=literal --session --reply-timeout=1500 --dest=org.mpris.MediaPlayer2.omxplayer /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.GetSource`"
+				filename="`basename "$filename"`"
+			else
+				status="stopped"
 			fi
-			echo " { \"status\": \"playing\",
-                                 \"filename\": `echo '{ "command": ["get_property", "filename"] }'       | $SUDO /usr/bin/socat - /tmp/mpv.sock | sed 's|.*data":\(.*\),"error.*|\1|'`,
-			         \"current\": `echo '{ "command": ["get_property", "playback-time"] }'   | $SUDO /usr/bin/socat - /tmp/mpv.sock | sed 's|.*data":\(.*\),"error.*|\1|'`,
-			         \"total\": `echo '{ "command": ["get_property", "length"] }'            | $SUDO /usr/bin/socat - /tmp/mpv.sock | sed 's|.*data":\(.*\),"error.*|\1|'`
-			       }
-			"
+                else
+			if [ \! -e /tmp/mpv.sock ]; then
+				status="stopped"
+			else
+                                 filename="`echo '{ "command": ["get_property", "filename"] }'       | $SUDO /usr/bin/socat - /tmp/mpv.sock | sed 's|.*data":\(.*\),"error.*|\1|'`"
+			         current="`echo '{ "command": ["get_property", "playback-time"] }'   | $SUDO /usr/bin/socat - /tmp/mpv.sock | sed 's|.*data":\(.*\),"error.*|\1|'`"
+			         total="`echo '{ "command": ["get_property", "length"] }'            | $SUDO /usr/bin/socat - /tmp/mpv.sock | sed 's|.*data":\(.*\),"error.*|\1|'`"
+			fi
+		fi
+		if [ "$status" = "stopped" ]; then
+			echo "{ \"status\": \"stopped\" }"
+		else
+			echo "{ \"status\": \"playing\", \"filename\": \"${filename}\", \"current\": $current, \"total\": $total }"
 		fi
 		;;
 	*)
